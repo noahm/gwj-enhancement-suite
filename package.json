@@ -1,0 +1,20 @@
+{
+  "name": "gwj-enhancement-suite",
+  "version": "1.0.0",
+  "description": "Enhancements for gamerswithjobs.com",
+  "scripts": {
+    "build": "webpack",
+    "firefox-dev": "web-ext run --source-dir addon --start-url https://www.gamerswithjobs.com/tracker",
+    "firefox-build": "web-ext build --source-dir addon",
+    "lint": "web-ext lint --source-dir addon"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "web-ext": "^1.8.1",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "webextension-polyfill": "github:noahm/webextension-polyfill"
+  }
+}
