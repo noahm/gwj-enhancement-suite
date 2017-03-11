@@ -1,3 +1,4 @@
 require('webextension-polyfill');
 
-// Do addon stuff here
+// include all components
+require('./disableEditorShortcuts');

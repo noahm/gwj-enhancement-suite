@@ -9,5 +9,8 @@
             "js": ["content_scripts/index.js"]
         }
     ],
+    "options_ui": {
+        "page": "settings/settings.html"
+    },
     "permissions": ["storage"]
 }
