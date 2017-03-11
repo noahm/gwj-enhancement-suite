@@ -10,8 +10,10 @@ function unbindShortcuts() {
 }
 
 settings.get(settings.keys.unbindEditorShortcuts).then(setting => {
-    if (setting) {
-        setTimeout(unbindShortcuts, 1000);
+    if (document.readyState === 'loading') {
+        document.addEventListener("DOMContentLoaded", unbindShortcuts);
+    } else {
+        unbindShortcuts();
     }
 }, err => console.warn('could not fetch setting', err));
 

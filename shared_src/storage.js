@@ -3,7 +3,7 @@ let storagePromise = new Promise((resolve, reject) => {
         resolve(browser.storage.local);
     }
     browser.storage.sync.set({}).then(success => browser.storage.sync, failure => {
-        console.warn('sync storage rejected an empty set, falling back to local storage', failure);
+        console.info('[gwj-es] sync storage rejected an empty set, falling back to local storage');
         return browser.storage.local;
     }).then(result => resolve(result));
 });
