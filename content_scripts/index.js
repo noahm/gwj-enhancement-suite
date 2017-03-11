@@ -3,6 +3,7 @@ try {
 
     // include all components
     require('./disableEditorShortcuts');
+    require('./spoilerToggle');
     require('./userIgnore');
 
 } catch (e) {
