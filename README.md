@@ -13,3 +13,12 @@ Provides extra features for gamerswithjobs.com
 
 1. lint the code and manifest `npm run lint`
 2. TODO: support building an unsigned zip `npm run dist-build && cd addon && web-ext build`
+
+## TODO
+
+- [ ] Import thread ignore script
+- [ ] figure out data migration
+- [ ] add upsell and collision avoidance to old userscripts
+- [ ] test in chrome
+- [ ] more UI in settings
+- [ ] publish to extension stores
