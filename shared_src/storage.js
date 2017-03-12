@@ -1,3 +1,5 @@
+const { browser } = require('./browser-polyfill');
+
 let storagePromise = new Promise((resolve, reject) => {
     if (!browser.storage.sync) {
         resolve(browser.storage.local);

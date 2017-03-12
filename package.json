@@ -14,7 +14,5 @@
     "web-ext": "^1.8.1",
     "webpack": "^2.2.1"
   },
-  "dependencies": {
-    "webextension-polyfill": "github:noahm/webextension-polyfill"
-  }
+  "dependencies": {}
 }
