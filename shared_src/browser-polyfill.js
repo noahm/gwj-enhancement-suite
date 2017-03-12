@@ -6,7 +6,14 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 "use strict";
 
-if (typeof browser === "undefined") {
+// only firefox defines both browser and chrome, so we skip this whole mess
+if (typeof browser === "undefined" || typeof chrome === "undefined") {
+  let apiRoot;
+  if (typeof chrome !== "undefined") {
+    apiRoot = chrome;
+  } else {
+    apiRoot = browser;
+  }
   // Wrapping the bulk of this polyfill in a one-time-use function is a minor
   // optimization for Firefox. Since Spidermonkey does not fully parse the
   // contents of a function until the first time it's called, and since it will
@@ -1092,14 +1099,16 @@ if (typeof browser === "undefined") {
      *        The promise's resolution function.
      * @param {function} promise.rejection
      *        The promise's rejection function.
+     * @param {object} apiRoot
+     *        The root API object that holds runtime
      *
      * @returns {function}
      *        The generated callback function.
      */
-    const makeCallback = promise => {
+    const makeCallback = (promise) => {
       return (...callbackArgs) => {
-        if (chrome.runtime.lastError) {
-          promise.reject(chrome.runtime.lastError);
+        if (apiRoot.runtime.lastError) {
+          promise.reject(apiRoot.runtime.lastError);
         } else if (callbackArgs.length === 1) {
           promise.resolve(callbackArgs[0]);
         } else {
@@ -1356,8 +1365,10 @@ if (typeof browser === "undefined") {
       },
     };
 
-    return wrapObject(chrome, staticWrappers, apiMetadata);
+    return wrapObject(apiRoot, staticWrappers, apiMetadata);
   };
 
   this.browser = wrapAPIs();
+} else {
+  this.browser = browser;
 }
