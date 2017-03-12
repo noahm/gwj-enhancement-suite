@@ -22,3 +22,4 @@ Provides extra features for gamerswithjobs.com
 - [ ] test in chrome
 - [ ] more UI in settings
 - [ ] publish to extension stores
+- [ ] import dark css theme

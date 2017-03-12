@@ -17,9 +17,8 @@ settings.get(settings.keys.unbindEditorShortcuts).then(setting => {
     }
 }, err => console.warn('could not fetch setting', err));
 
-storage.onChanged.addListener(changes => {
-    const setting = changes[settings.keys.unbindEditorShortcuts];
-    if (setting && setting.newValue) {
+settings.onChange(settings.keys.unbindEditorShortcuts, newValue => {
+    if (newValue) {
         unbindShortcuts();
     }
 });

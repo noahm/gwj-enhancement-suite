@@ -1,3 +1,5 @@
+const settings = require('../shared_src/settings-keys');
+
 var li;
 var toggled = false;
 
@@ -30,11 +32,26 @@ function insertSpoilerToggleTab() {
         li.style.display = 'inline-block';
         li.style.transition = 'transform 0.4s cubic-bezier(.77,.01,.41,1.81) 0s';
         li.querySelector('a').addEventListener('click', toggle);
+        li.id = 'spoiler-toggle-tab';
         list.insertBefore(li, list.children[0]);
     }
 }
 
 // only run on /node/* pages (aka threads)
 if (window.location.pathname.match(/^\/node\//)) {
-    insertSpoilerToggleTab();
+    settings.get(settings.keys.showSpoilerToggle).then(setting => {
+        if (setting) {
+            insertSpoilerToggleTab();
+        }
+    });
+    settings.onChange(settings.keys.showSpoilerToggle, newSetting => {
+        if (newSetting) {
+            insertSpoilerToggleTab();
+        } else {
+            const tab = document.querySelector('#spoiler-toggle-tab');
+            if (tab) {
+                tab.remove();
+            }
+        }
+    });
 }
