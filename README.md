@@ -17,9 +17,11 @@ Provides extra features for gamerswithjobs.com
 ## TODO
 
 - [ ] Import thread ignore script
-- [ ] figure out data migration
+- [ ] figure out data migration from userscripts
+- [ ] figure out how to migrate settings from local to sync storage
 - [ ] add upsell and collision avoidance to old userscripts
 - [ ] test in chrome
 - [ ] more UI in settings
 - [ ] publish to extension stores
 - [ ] import dark css theme
+- [ ] add extension image assets
